@@ -1,0 +1,84 @@
+package sortmethods;
+
+import java.util.Scanner;
+
+interface sortoperations{
+    public void sortm1(int arr[]);
+    public void sortm2(int arr[]);
+    public void sortm3(int arr[]);
+
+}
+public class Bsort implements sortoperations {
+
+    public void sortm1(int arr[]) {
+        int temp;
+        int i;
+        for (i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+
+                }
+            }
+        }
+    }
+
+    public void sortm2(int arr[]) {
+        int temp;
+        int i;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    public void sortm3(int[] arr) {
+        int temp;
+        int i;
+        for (i = 0; i < arr.length - 1; i++) {
+            int flag = 0;
+            for (int j = 0; i < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                     flag = 1;
+                }
+            }
+            if (flag == 0) {
+                break;
+            }
+        }
+    }
+}
+
+class test{
+    public static void main(String[] args) {
+        int arr[] = {12,5,67,3,8};
+        Bsort obj = new Bsort();
+        Scanner s = new Scanner(System.in);
+
+        int v = s.nextInt();
+        if (v==1){
+            obj.sortm1(arr);
+        }
+        if(v==2){
+            obj.sortm2(arr);
+        }
+        if(v==3){
+            obj.sortm3(arr);
+        }
+        for(int x : arr){
+            System.out.println(x);
+
+
+    }
+}
+}
+c
